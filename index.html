@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drill 1</title>
+
+    <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: rgb(255, 252, 193);
+        }
+        .container{
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+        }
+        input{
+            padding: 6px;
+            width: 80%;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+        button{
+            padding: 8px 15px;
+            border-radius: 6px;
+            background-color: rgb(255, 227, 104);
+        }
+        output{
+            margin-top: 15px;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Electricity Consumption Classifier</h2>
+        <input type="number" id="usage" placeholder="Enter usage (kWh)">
+        <br>
+        <button onclick="EvaluateConsumption()">Evaluate</button>
+    </div>
+
+    <div class="output">
+        <p id="category"></p>
+        <p id="description"></p>
+    </div>
+
+    <script>
+    function EvaluateConsumption(){
+        var usage = document.getElementById("usage").value;
+        if (usage === "") {
+            alert("Please enter usage in kWh");
+            return;
+        }
+        usage = Number(usage);
+        var category = "";
+        var description = "";
+        if (usage >= 0 && usage <= 100) {
+            category = "Lifeline Consumer";
+            description = "Discounted electricity rates";
+        } else if (usage >= 101 && usage <= 200) {
+            category = "Low Consumption";
+            description = "Normal residential rate";
+        } else if (usage >= 201 && usage <= 300) {
+            category = "Average Consumption";
+            description = "Typical electricity usage";
+        } else if (usage >= 301 && usage <= 500) {
+            category = "High Consumption";
+            description = "Higher electricity usage";
+        } else if (usage > 500) {
+            category = "Very High Consumption";
+            description = "Heavy electricity users";
+        } else {
+            category = "Invalid Input";
+            description = "Please enter a valid usage value.";
+        }
+        document.getElementById("category").innerHTML = "Category: " + category;
+        document.getElementById("description").innerHTML = "Description: " + description;
+    }
+
+            </script>
+</body>
+</html>
