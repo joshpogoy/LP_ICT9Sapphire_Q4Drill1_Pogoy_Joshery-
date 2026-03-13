@@ -62,29 +62,26 @@
         usage = Number(usage);
         var category = "";
         var description = "";
-        if (usage >= 0 && usage <= 100) {
+        if (usage <= 100) {
             category = "Lifeline Consumer";
             description = "Discounted electricity rates";
-        } else if (usage >= 101 && usage <= 200) {
+        } else if (usage <= 200) {
             category = "Low Consumption";
             description = "Normal residential rate";
-        } else if (usage >= 201 && usage <= 300) {
+        } else if (usage <= 300) {
             category = "Average Consumption";
             description = "Typical electricity usage";
-        } else if (usage >= 301 && usage <= 500) {
+        } else if (usage <= 500) {
             category = "High Consumption";
-            description = "Higher electricity usage";
-        } else if (usage > 500) {
-            category = "Very High Consumption";
-            description = "Heavy electricity users";
+            description = "High electricity usage";
         } else {
-            category = "Invalid Input";
-            description = "Please enter a valid usage value.";
+            category = "Very High Consumption";
+            description = "Very high electricity usage";
         }
         document.getElementById("category").innerHTML = "Category: " + category;
         document.getElementById("description").innerHTML = "Description: " + description;
     }
 
-            </script>
+        </script>
 </body>
 </html>
